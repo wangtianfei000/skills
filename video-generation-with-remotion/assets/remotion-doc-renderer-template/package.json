@@ -1,0 +1,32 @@
+{
+  "name": "remotion-doc-renderer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "browser:download": "npm run build && node dist/browser-download.js",
+    "browser:check": "npm run build && node dist/browser-check.js",
+    "doctor": "node dist/doctor.js",
+    "deploy:verify": "npm run browser:download && npm run browser:check && npm run verify",
+    "verify": "npm run build && npm run doctor",
+    "render:manifest": "npm run build && node dist/render.js",
+    "render:sample": "remotion render src/index.ts GeneratedDocVideo ../output/remotion-doc-mvp/sample-doc-video.mp4 --codec=h264 --pixel-format=yuv420p --overwrite",
+    "still:sample": "remotion still src/index.ts GeneratedDocVideo ../output/remotion-doc-mvp/cover.jpg --frame=120 --overwrite"
+  },
+  "dependencies": {
+    "@fontsource/noto-sans-sc": "^5.2.9",
+    "@remotion/bundler": "4.0.454",
+    "@remotion/cli": "4.0.454",
+    "@remotion/renderer": "4.0.454",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "remotion": "4.0.454"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "19.0.0",
+    "@types/react-dom": "19.0.0",
+    "typescript": "5.8.3"
+  }
+}
